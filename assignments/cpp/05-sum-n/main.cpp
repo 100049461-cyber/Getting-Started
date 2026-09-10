@@ -2,6 +2,16 @@
 using namespace std;
 
 int main() {
-    // Write your solution here.
+    int n;
+    cin >> n;
+    int v[n];
+    for (int i = 0; i < n; i++) {
+        cin >> v[i];
+    }
+    int sum = 0;
+    for (int i = 0; i < n; i++) {
+        sum += v[i];
+    }
+    cout << sum << "\n";
     return 0;
 }
