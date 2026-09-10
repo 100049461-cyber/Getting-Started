@@ -1,0 +1,13 @@
+/getting_started
+/build/
+/.getting_started/
+__pycache__/
+*.pyc
+*.class
+*.o
+*.out
+!testcases/**/*.out
+.DS_Store
+/assignments/**/a.out
+/assignments/**/main
+/assignments/**/main.exe

@@ -1,0 +1,30 @@
+name: Autograde
+run-name: ${{ github.event.head_commit.message }}
+
+on: push
+
+permissions:
+  contents: read
+
+jobs:
+  grade:
+    if: "startsWith(github.event.head_commit.message, 'Submit: ')"
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Build matching toolchain
+        run: docker build --pull -t getting-started .devcontainer
+      - name: Grade submission
+        env:
+          SUBMISSION_MESSAGE: ${{ github.event.head_commit.message }}
+        run: |
+          touch "$GITHUB_STEP_SUMMARY"
+          docker run --rm \
+            -e SUBMISSION_MESSAGE \
+            -e GITHUB_STEP_SUMMARY=/summary.md \
+            -v "$GITHUB_STEP_SUMMARY:/summary.md" \
+            -v "$PWD:/workspace" -w /workspace \
+            getting-started sh -c 'make && ./getting_started --ci "$SUBMISSION_MESSAGE"'
