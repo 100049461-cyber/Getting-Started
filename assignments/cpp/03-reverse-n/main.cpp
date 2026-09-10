@@ -2,6 +2,14 @@
 using namespace std;
 
 int main() {
-    // Write your solution here.
+    int n = 0;
+    cin >> n;
+    int v[n];
+    for (int i = 0; i < n; i++) {
+        cin >> v[i];
+    }
+    for (int i = n - 1; i >= 0; i--) {
+        cout << v[i] << " ";
+    }
     return 0;
 }
