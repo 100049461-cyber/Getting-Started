@@ -1,7 +1,10 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
 int main() {
-    // Write your solution here.
+    string dih;
+    getline(cin, dih);
+    cout << dih << "\n";
     return 0;
 }
