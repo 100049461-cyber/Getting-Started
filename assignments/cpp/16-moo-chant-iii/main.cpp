@@ -1,7 +1,15 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
 int main() {
-    // Write your solution here.
+    string dih;
+    while (cin >> dih) {
+        cout << dih;
+        if (!cin.eof()) {
+            cout << '\n';
+        }
+    }
+
     return 0;
 }
